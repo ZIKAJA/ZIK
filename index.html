@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ZIK STORE - Pembayaran</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET ABSOLUT */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.25;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* KONTEN UTAMA - LEBIH ELEGAN */
+        .payment-container {
+            background: white;
+            width: 100%;
+            max-width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(26, 86, 219, 0.08);
+            padding: 14px 12px;
+        }
+
+        /* LOGO BARU - SUPER KEREN & PROFESIONAL */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e8edf2;
+        }
+
+        .logo-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a56db, #2a6bdb);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(26, 86, 219, 0.15);
+            position: relative;
+        }
+
+        /* IKON TAMBAHAN DI LOGO */
+        .logo-box::before {
+            content: '\f290';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 700;
+            color: rgba(255,255,255,0.2);
+            font-size: 1.2em;
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text .z {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .logo-text .sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: -2px;
+        }
+
+        .store-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .store-name h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15em;
+            color: #111;
+            letter-spacing: 0.5px;
+        }
+
+        .store-name p {
+            font-size: 0.75em;
+            color: #555;
+        }
+
+        /* INFO PENJUAL - LEBIH MENARIK */
+        .seller-info {
+            background: linear-gradient(135deg, #f0f7ff, #f5faff);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            margin-bottom: 10px;
+            border: 1px solid #e0efff;
+        }
+
+        .seller-info .label {
+            font-size: 0.7em;
+            color: #1a56db;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .seller-info .name {
+            font-size: 1em;
+            font-weight: 700;
+            color: #111;
+        }
+
+        /* JUDUL - LEBIH JELAS */
+        .title {
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .title i {
+            color: #1a56db;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+
+        /* STATUS SALIN - LEBIH RESPONSIF */
+        .copy-status {
+            display: none;
+            background: linear-gradient(135deg, #e8f5e9, #f0fff4);
+            color: #2e7d32;
+            border-radius: 6px;
+            padding: 7px;
+            text-align: center;
+            font-size: 0.75em;
+            margin-bottom: 8px;
+            border: 1px solid #d8f3dc;
+        }
+
+        /* METODE PEMBAYARAN - LEBIH KEREN */
+        .method-list {
+            margin-bottom: 12px;
+        }
+
+        .method-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #fafafa;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            border: 1px solid #eee;
+            transition: all 0.15s ease;
+        }
+
+        .method-item:hover {
+            border-color: #d0e0ff;
+            background: #f8fbff;
+        }
+
+        .method-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+
+        .dana {
+            background: linear-gradient(135deg, #e8f5e9, #f0fff4);
+            color: #2e7d32;
+            border: 1px solid #d8f3dc;
+        }
+
+        .gopay {
+            background: linear-gradient(135deg, #e3f2fd, #edf5ff);
+            color: #1976d2;
+            border: 1px solid #c8e1ff;
+        }
+
+        .method-icon i {
+            font-size: 1.1em;
+        }
+
+        .method-desc {
+            flex-grow: 1;
+        }
+
+        .method-desc .name {
+            font-size: 0.75em;
+            color: #666;
+            margin-bottom: 1px;
+        }
+
+        .method-desc .num {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: 0.2px;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #1a56db, #2a6bdb);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 7px;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* PETUNJUK - LEBIH TERSTRUKTUR */
+        .guide-section {
+            background: linear-gradient(135deg, #fff8e1, #fffbeb);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ffeeb3;
+        }
+
+        .guide-section .title {
+            font-size: 0.9em;
+            color: #f57c00;
+            margin-bottom: 6px;
+        }
+
+        .guide-section .title i {
+            color: #f57c00;
+        }
+
+        .guide-list li {
+            font-size: 0.75em;
+            color: #333;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .guide-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-list .num {
+            background: linear-gradient(135deg, #f57c00, #f7891a);
+            color: white;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65em;
+            margin-right: 5px;
+            margin-top: 1px;
+        }
+
+        .guide-list .highlight {
+            color: #f57c00;
+            font-weight: 700;
+        }
+
+        /* PENUTUP - LEBIH ELEGAN */
+        .closing {
+            text-align: center;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #111;
+            padding: 8px;
+            background: linear-gradient(135deg, #fafafa, #f8f9fa);
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .closing i {
+            color: #1a56db;
+            margin-right: 3px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        
+        <!-- LOGO BARU SUPER KEREN -->
+        <div class="logo-section">
+            <div class="logo-box">
+                <div class="logo-text">
+                    <span class="z">Z</span>
+                    <span class="sub">STORE</span>
+                </div>
+            </div>
+            <div class="store-name">
+                <h1>ZIK STORE REAL</h1>
+                <p>Detail Pembayaran Resmi</p>
+            </div>
+        </div>
+
+        <!-- INFO PENJUAL LEBIH MENARIK -->
+        <div class="seller-info">
+            <div class="label">PEMBAYARAN KEPADA</div>
+            <div class="name">ADMIN ZIK STORE</div>
+        </div>
+
+        <!-- JUDUL METODE -->
+        <div class="title">
+            <i class="fas fa-credit-card"></i> METODE PEMBAYARAN
+        </div>
+
+        <!-- STATUS SALIN -->
+        <div class="copy-status" id="copyStatus">
+            <i class="fas fa-check-circle"></i> Nomor berhasil disalin!
+        </div>
+
+        <!-- DAFTAR METODE -->
+        <div class="method-list">
+            <div class="method-item">
+                <div class="method-icon dana">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="method-desc">
+                    <div class="name">DANA 1 - Mu* ilh*** kur***</div>
+                    <div class="num" id="dana1">085972768696</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('dana1')">
+                    <i class="fas fa-copy"></i> Salin
+                </button>
+            </div>
+
+            <div class="method-item">
+                <div class="method-icon dana">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="method-desc">
+                    <div class="name">DANA 2 - ZIK STORE</div>
+                    <div class="num" id="dana2">0882019974609</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('dana2')">
+                    <i class="fas fa-copy"></i> Salin
+                </button>
+            </div>
+
+            <div class="method-item">
+                <div class="method-icon gopay">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="method-desc">
+                    <div class="name">GoPay - ZIK STORE</div>
+                    <div class="num" id="gopay">082151935953</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('gopay')">
+                    <i class="fas fa-copy"></i> Salin
+                </button>
+            </div>
+        </div>
+
+        <!-- PETUNJUK -->
+        <div class="guide-section">
+            <div class="title">
+                <i class="fas fa-info-circle"></i> CARA  TRANSFER TRX/MC
+            </div>
+            <div class="guide-list">
+                <li><span class="num">1</span> Ambil <span class="highlight">screenshot bukti transfer
+                
+                jelas ya </li>
+                <li><span class="num">2</span>  lalu Kirim bukti tf ke nomor zik <spanke< span> </span>
+              
+              </li>
+                <li><span class="num">3</span> MC? KIRIM BUKTI TF KE GRUB  KALAU MASUK SILAHKAN PM ANTARA BUYER DAN SELLER</li>
+                <li><span class="num">4</span> Proses cek tf memakan 1-2 menit saja</li>
+            </div>
+        </div>
+
+        <!-- PENUTUP -->
+        <div class="closing">
+            <i class="fas fa-star"></i> Transfer → Kirim Bukti → Tunggu ADMIN ZIK CEK TF
+        </div>
+
+    </div>
+
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(text);
+            const status = document.getElementById('copyStatus');
+            status.style.display = 'block';
+            setTimeout(() => status.style.display = 'none', 2500);
+        }
+    </script>
+
+</body>
+</html>
